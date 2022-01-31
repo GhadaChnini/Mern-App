@@ -1,0 +1,33 @@
+const contacts = [
+  { _id: "1", 
+  name: "Ilhem Chenini", 
+  email: "ilhemchenini@gmail.com",
+ },
+  { _id: "2",
+   name: "Ines Chenini",
+    email: "ineschenini@gmail.com" ,
+},
+  { _id: "3", 
+  name: "Ikram Chenini",
+   email: "ikramchenini12@gmail.com",
+ },
+ { _id: "4", 
+  name: "Ghassen Chenini", 
+  email: "ghassenchenini@gmail.com" ,
+},
+  { _id: "5", 
+  name: "Ali chouk", 
+  email: "alichouk@gmail.com" ,
+},
+  { _id: "6",
+   name: "wahib dellel", 
+   email: "wahibdellel@gmail.com",
+ },
+ {
+     _id: "7",
+     name: "Abdelhak jawadi",
+     email: "abdelhak@gmail.com" ,
+ },
+];
+
+module.exports = contacts;
