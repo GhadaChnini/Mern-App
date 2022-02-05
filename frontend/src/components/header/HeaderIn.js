@@ -11,20 +11,21 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/userActions";
 
-function Header({ setSearch }) {
+function HeaderIn({ setSearch }) {
+  // window.location.reload();
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
   const navigate = useNavigate();
+
   const logoutHandler = () => {
     dispatch(logout());
-    userInfo.name = "user";
     navigate("");
   };
 
   useEffect(() => {}, [userInfo]);
-
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -53,7 +54,10 @@ function Header({ setSearch }) {
               <Link to="/mynotes">My notes</Link> &emsp;
               <Link to="/mycontacts">My Contacts</Link>
             </Nav.Link>
-            <NavDropdown title="ilhem" id="navbarScrollingDropdown">
+            <NavDropdown
+              title={`${userInfo.name}`}
+              id="navbarScrollingDropdown"
+            >
               <NavDropdown.Item>My profile</NavDropdown.Item>
               <NavDropdown.Item onClick={logoutHandler}>
                 Logout
@@ -66,4 +70,5 @@ function Header({ setSearch }) {
     </Navbar>
   );
 }
-export default Header;
+
+export default HeaderIn;

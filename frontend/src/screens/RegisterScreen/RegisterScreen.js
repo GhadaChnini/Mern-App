@@ -72,6 +72,7 @@ function RegisterScreen() {
     } else dispatch(register(name, email, password, pic));
   };
 
+
  
 
   return (
@@ -149,6 +150,7 @@ function RegisterScreen() {
             variant="primary"
             type="submit"
             class="btn btn-primary mt-4"
+            
           >
             Register
           </Button>

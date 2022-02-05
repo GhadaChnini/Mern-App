@@ -30,6 +30,8 @@ function LoginScreen() {
     dispatch(login(email, password));
   };
 
+ 
+
   return (
     <MainScreen title="LOGIN">
       <div className="loginContainer">
@@ -56,7 +58,11 @@ function LoginScreen() {
             />
           </Form.Group>
           <Form.Group class="mt-2">
-            <Button variant="primary" type="submit" class="btn btn-primary">
+            <Button
+              variant="primary"
+              type="submit"
+              class="btn btn-primary"
+            >
               Submit
             </Button>
           </Form.Group>
