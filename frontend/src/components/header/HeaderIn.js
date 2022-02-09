@@ -34,7 +34,7 @@ function HeaderIn({ setSearch }) {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className=" m-auto">
+         {userInfo ?  <Nav className=" m-auto">
             <Form inline>
               <FormControl
                 type="search"
@@ -44,8 +44,8 @@ function HeaderIn({ setSearch }) {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </Form>
-          </Nav>
-          <Nav
+          </Nav>: <div></div>}
+         {userInfo ? <Nav
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: "100px" }}
             navbarScroll
@@ -58,13 +58,13 @@ function HeaderIn({ setSearch }) {
               title={`${userInfo.name}`}
               id="navbarScrollingDropdown"
             >
-              <NavDropdown.Item>My profile</NavDropdown.Item>
+              <NavDropdown.Item href="/profile">My profile</NavDropdown.Item>
               <NavDropdown.Item onClick={logoutHandler}>
                 Logout
               </NavDropdown.Item>
               <NavDropdown.Divider />
             </NavDropdown>
-          </Nav>
+          </Nav>: <div></div>}
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -8,6 +8,7 @@ const LandingPage = ({ navigate }) => {
   const { userInfo } = userLogin;
 
   useEffect(() => {
+    const userInfo = localStorage.getItem("userInfo");
     if (userInfo) {
       navigate("/mynotes");
     }

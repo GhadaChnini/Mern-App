@@ -13,13 +13,16 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "concurrently": "^7.0.0",
-    "dotenv": "^14.3.0",
+    "dotenv": "^14.3.2",
+    "emailjs-com": "^3.2.0",
     "express": "^4.17.2",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.1.8",
+    "mongoose": "^6.2.0",
     "nodemon": "^2.0.15",
     "react-redux": "^7.2.6",
-    "redux": "^4.1.2"
+    "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.1"
   }
 }

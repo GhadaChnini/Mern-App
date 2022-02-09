@@ -1,8 +1,8 @@
 const express = require("express");
-const notes = require("./data/notes");
+// const notes = require("./data/notes");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
-const contacts = require("./data/contacts");
+// const contacts = require("./data/contacts");
 const userRoutes = require("./routes/userRoutes");
 const { errorHandler, notFound } = require("./middlewares/errorMiddleware");
 const noteRoutes = require("./routes/noteRoutes");

@@ -51,6 +51,11 @@ const MyNotes = ({ search }) => {
     successUpdate,
     successDelete,
   ]);
+  // useEffect(() => {
+  //   if (noteList) {
+  //     navigate("/mycontacts");
+  //   }
+  // }, [navigate, noteList]);
 
   return (
     <MainScreen title={`Welcome Back ${userInfo.name}...`}>
@@ -96,7 +101,7 @@ const MyNotes = ({ search }) => {
 
                   <div>
                     <Link to="/mycontacts">
-                      <Button variant="dark" className="mx-2">
+                      <Button variant="dark" className="mx-2" href={`/contact/${note._id}`}>
                         Send Mail
                       </Button>
                     </Link>
