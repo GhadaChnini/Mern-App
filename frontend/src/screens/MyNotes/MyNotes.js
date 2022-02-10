@@ -100,8 +100,8 @@ const MyNotes = ({ search }) => {
                   </span>
 
                   <div>
-                    <Link to="/mycontacts">
-                      <Button variant="dark" className="mx-2" href={`/contact/${note._id}`}>
+                    <Link to={`/contacts/${note._id}`}>
+                      <Button variant="dark" className="mx-2" >
                         Send Mail
                       </Button>
                     </Link>

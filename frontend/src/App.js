@@ -36,6 +36,7 @@ const App = () => {
           <Route path="/note/:id" element={<SingleNote />} exact />
           <Route path="/createnote" element={<CreateNote />} exact />
           <Route path="/contact/:id" element={<SingleContact />} exact />
+          <Route path="/contacts/:id" element={<MyContacts search={search} />} exact />
           <Route
             path="/mycontacts"
             element={<MyContacts search={search} />}

@@ -7,11 +7,11 @@ import { deleteContactAction, listContacts } from "../../actions/contactsActions
 import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
-// import sendEmail from "./sendEmail";
-// import emailjs from "emailjs-com";
+import emailjs from "emailjs-com";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-// import { $CombinedState } from "redux";
+
+
 
 const MyContacts = ({ search }) => {
   const dispatch = useDispatch();
@@ -57,55 +57,6 @@ const MyContacts = ({ search }) => {
     successUpdate,
     successDelete,
   ]);
-  // const noteList = useSelector((state) => state.noteList);
-  // const { note } = noteList;
-
-// const sendEmail = async (subject, email, message) => {
-//  if(window.confirm("Are you sure?")){
-//   try {
-//     const response = await emailjs.send(
-//       serviceId,
-//       templateId,
-//       { subject, email, message },
-//       userId
-//     );
-
-//     if (response === 200) {
-//       window.confirm("Successfully sent message.");
-//     }
-//   } catch (error) {
-//     window.confirm("Failed to send email. Error: ", error);
-//   }
-// };
-// }
-
-
-// const [title, setTitle] = useState();
-// const [content, setContent] = useState();
-
-
-// const { id } = useParams();
-// useEffect(() => {
-//   const fetching = async () => {
-//     const { data } = await axios.get(`/api/notes/${id}`);
-
-//     setTitle(data.title);
-//     setContent(data.content);
-//   };
-//   fetching();
-// }, [id]);
-// var data = {
-//     serviceId : "service_qsgp14q",
-//     templateId : "template_1n3d08u",
-//    userId : "user_Z5XvgO5kyT5j6CoPlkBlq",
-//    templateParams : {
-//   subject: "hey",
-//   email: "ghadachnini17@gmail.com",
-//   message: "hey"
-// }
-// };
-
-
 
 
 const [title, setTitle] = useState();
@@ -126,21 +77,28 @@ const { id } = useParams();
     fetching();
   }, [id, date]);
 
+const serviceId = "service_oooc172";
+  const templateId = "template_0wrtuab";
+  const userId = "user_flMsaDepAPS5jQfNClSwB";
 
-const sendEmail = async () =>{
-  if(window.confirm(`Are you sure? ${title}`)){
-//     fetch('https://api.emailjs.com/api/v1.0/email/send', {
-//     type: 'POST',
-//     data: JSON.stringify(data),
-//     contentType: 'application/json'
-// }).done(function() {
-//     alert('Your mail is sent!');
-// }).fail(function(error) {
-//     alert('Oops... ' + JSON.stringify(error));
-// });
+const sendEmail = async (subject, email, message, from) => {
+ if(window.confirm("Are you sure?")){
+  try {
+    const response = await emailjs.send(
+      serviceId,
+      templateId,
+      { subject, email, message, from },
+      userId
+    );
 
- }
+    if (response === 200) {
+      window.confirm("Successfully sent message.");
+    }
+  } catch (error) {
+    window.confirm("Failed to send email. Error: ", error);
+  }
 };
+}
   return (
   
     <MainScreen title={"Contacts"}>
@@ -194,7 +152,7 @@ const sendEmail = async () =>{
                   <Link to="/mycontacts">
                     <Button variant="dark" className="mx-2"
                        onClick={() =>
-                        sendEmail()
+                        sendEmail(title, contact.email, content, userInfo.email )
                       }
                     >
                       Send
