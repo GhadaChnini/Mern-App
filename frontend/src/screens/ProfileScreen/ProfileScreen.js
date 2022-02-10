@@ -16,6 +16,7 @@ const ProfileScreen = ({ location, history }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [picMessage, setPicMessage] = useState();
+  const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -40,9 +41,9 @@ const ProfileScreen = ({ location, history }) => {
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
-      data.append("upload_preset", "notezipper");
-      data.append("cloud_name", "piyushproj");
-      fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+      data.append("upload_preset", "mystickynotes");
+      data.append("cloud_name", "dns32gzyj");
+      fetch("CLOUDINARY_URL=cloudinary://855515858979626:KmElhdWb2Jb4mhq4_qDZJARsoOY@dns32gzyj", {
         method: "post",
         body: data,
       })
@@ -58,11 +59,12 @@ const ProfileScreen = ({ location, history }) => {
       return setPicMessage("Please Select an Image");
     }
   };
-
   const submitHandler = (e) => {
     e.preventDefault();
 
-    dispatch(updateProfile({ name, email, password, pic }));
+    if (password !== confirmPassword) {
+      setMessage("Passwords do not match");
+    }else dispatch(updateProfile({ name, email, password, pic }));
   };
 
   return (
@@ -76,8 +78,11 @@ const ProfileScreen = ({ location, history }) => {
                 <ErrorMessage variant="success">
                   Updated Successfully
                 </ErrorMessage>
+                 
               )}
               {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+              {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
+
               <Form.Group controlId="name">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
