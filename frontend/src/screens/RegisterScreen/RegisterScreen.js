@@ -19,27 +19,25 @@ function RegisterScreen() {
   const [confirmpassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
   const [picMessage, setPicMessage] = useState(null);
-
+  
   const dispatch = useDispatch();
 
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, error, userInfo } = userRegister;
 
   const postDetails = (pics) => {
-    if (
-      pics ===
-      "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
-    ) {
+    if (!pics) {
       return setPicMessage("Please Select an Image");
     }
     setPicMessage(null);
+    
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
       data.append("upload_preset", "mystickynotes");
       data.append("cloud_name", "dns32gzyj");
       fetch(
-        "CLOUDINARY_URL=cloudinary://855515858979626:KmElhdWb2Jb4mhq4_qDZJARsoOY@dns32gzyj",
+        `https://api.cloudinary.com/v1_1/dns32gzyj/upload`,
         {
           method: "post",
           body: data,
@@ -47,6 +45,7 @@ function RegisterScreen() {
       )
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           setPic(data.url.toString());
         })
         .catch((err) => {
@@ -135,14 +134,10 @@ function RegisterScreen() {
               custom
             /> */}
             <input
-              variant="dark"
               className="mx-2"
               onChange={(e) => postDetails(e.target.files[0])}
               type="file"
               accept="application/png"
-              id="custom-file"
-              label="Upload Profile Picture"
-              custom
             />
           </Form.Group>
 
