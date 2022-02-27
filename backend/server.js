@@ -7,6 +7,7 @@ const userRoutes = require("./routes/userRoutes");
 const { errorHandler, notFound } = require("./middlewares/errorMiddleware");
 const noteRoutes = require("./routes/noteRoutes");
 const contactRoutes = require("./routes/contactRoutes");
+const AdminRoutes = require("./routes/AdminRoutes");
 
 const app = express();
 dotenv.config();
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/notes", noteRoutes);
 app.use("/api/contacts", contactRoutes);
+app.use("/admin", AdminRoutes)
 
 
 app.use(notFound);
